@@ -1,14 +1,22 @@
+import { useEffect } from "react"
 import { useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 import { useAuth } from "../context/AuthContex"
-import { Input } from "../components/Input/Input"
+import { Input } from "../components/Input"
+import { Button } from "../components/Button"
+
 
 export default function LoginPage() {
+  const navigate = useNavigate()
   const { register, handleSubmit, formState: { errors } } = useForm()
-  const { signIn, errors: signInErrors } = useAuth()
+  const { signIn, errors: signInErrors, isAuthenticated } = useAuth()
 
   const onSubmit = handleSubmit(async (values) => await signIn(values))
+
+    useEffect(() => {
+      if (isAuthenticated) navigate('/tasks')
+    }, [isAuthenticated])
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
@@ -24,8 +32,7 @@ export default function LoginPage() {
           {errors.email && (<p className="text-red-500">Email is required</p>)}
           <Input type="password" placeholder="Password" {...register('password', { required: true })} />
           {errors.password && (<p className="text-red-500">Password is required</p>)}
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Login</button>
-        </form>
+          <Button value="Login" />        </form>
         <p className="flex gap-x-2 justify-between mt-2">
           Don't have an account?
           <Link to="/register" className="text-sky-500">Sign up</Link>

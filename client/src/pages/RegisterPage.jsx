@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form'
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 
-import { Input } from '../components/Input/Input'
+import { Input } from '../components/Input'
 import { useAuth } from '../context/AuthContex'
-
+import { Button } from '../components/Button'
 
 export default function RegisterPage() {
   const { signUp, isAuthenticated, errors: registerErrors } = useAuth()
@@ -12,9 +12,7 @@ export default function RegisterPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/task')
-    }
+    if (isAuthenticated) navigate('/tasks')
   }, [isAuthenticated])
 
   const onSubmit = handleSubmit(async (values) => await signUp(values))
@@ -35,8 +33,7 @@ export default function RegisterPage() {
           {errors.email && (<p className="text-red-500">Email is required</p>)}
           <Input type="password" placeholder="Password" {...register('password', { required: true })} />
           {errors.password && (<p className="text-red-500">Password is required</p>)}
-          <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2">Register</button>
-        </form>
+          <Button value="Sign up" />        </form>
         <p className="flex gap-x-2 justify-between mt-2">
           Have you already got an account?
           <Link to="/login" className="text-sky-500">Sign in</Link>
