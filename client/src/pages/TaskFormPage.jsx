@@ -3,12 +3,17 @@ import { useForm } from "react-hook-form"
 import { Input } from "../components/Input"
 import { Button } from "../components/Button"
 import { useTasks } from "../context/TaskContext"
+import { useNavigate } from "react-router-dom"
 
 export default function TaskFormPage() {
   const { register, handleSubmit } = useForm()
-  const { tasks, createTask } = useTasks()
+  const { createTask } = useTasks()
+  const navigate = useNavigate()
 
-  const onSubmit = handleSubmit(data => createTask(data))
+  const onSubmit = handleSubmit(data => {
+    createTask(data)
+    navigate('/tasks')
+  })
 
   // TODO: textarea class ==  input class
   // TODO: form wrapper to components
