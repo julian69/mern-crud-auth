@@ -1,4 +1,4 @@
-## Task Manager! (IN PROGRESS)
+## Auth & Task Manager (IN PROGRESS)
 
 ### Description
 Task Manager is a simple application that allows you to create, edit and delete tasks. It also has a simple authentication system.
