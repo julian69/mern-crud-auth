@@ -34,5 +34,6 @@ $ npm run test
 ```
 
 ### Preview
-![image](![image](https://github.com/julian69/mern-crud-auth/assets/6019858/fbbf9f9c-2495-4e89-bb65-bb8ec58be3ae))
+![image](https://github.com/julian69/mern-crud-auth/assets/6019858/44321975-1fab-4017-bbe3-dc7c65e17bde)
+
 
