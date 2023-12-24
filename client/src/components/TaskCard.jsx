@@ -1,25 +1,35 @@
 import React from 'react'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
 
 import { Button } from "../components/Button"
 import { useTasks } from '../context/TaskContext'
 import { Link } from 'react-router-dom'
 
+dayjs.extend(utc)
+
 export default function TaskCard({ task }) {
   const { deleteTask } = useTasks()
 
   return (
-    <div>
-      <div className="bg-zinc-800 max-w-md w-full p-5">
-        <header className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold">{task.title}</h2>
-          <div className="flex gap-x-2 items-center">
-            <Button value="Delete" onClick={() => deleteTask(task._id)} />
-            <Link to={`/tasks/${task._id}`}>Edit</Link>
-          </div>
-        </header>
-        <p className="text-slate-300">{task.description}</p>
-        <p className="text-slate-300">{new Date(task.date).toLocaleString()}</p>
-      </div>
-    </div>
+    <tr className="border-b hover:bg-gray-100 cursor-pointer">
+      <td className="p-3 px-5">
+        {dayjs.utc(task.date).format("DD/MM/YYYY")}
+      </td>
+      <td className="p-3 px-5">
+        {task.title}
+      </td>
+      <td className="p-3 px-5">
+        {task.description}
+      </td>
+      <td className="p-3 px-5 flex justify-end">
+        <Link
+          to={`/tasks/${task._id}`}
+          className="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</Link>
+        <button
+          type="button"
+          className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline" onClick={() => deleteTask(task._id)}>Delete</button>
+      </td>
+    </tr>
   )
 }

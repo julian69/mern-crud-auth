@@ -19,13 +19,13 @@ export default function RegisterPage() {
 
   return (
     <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+      <div className="max-w-md w-full p-10 rounded-sm border">
         {
           registerErrors.map((e, i) => (
             <div key={e} className="bg-red-500 p-2 mb-2">{e}</div>
           ))
         }
-        <h1 className="text-2xl font-bold">Register</h1>
+        <h1 className="text-2xl font-bold mb-6">Register</h1>
         <form onSubmit={onSubmit}>
           <Input type="text" placeholder="Username" {...register('username', { required: true })} />
           {errors.username && (<p className="text-red-500">Username is required</p>)}
@@ -34,9 +34,9 @@ export default function RegisterPage() {
           <Input type="password" placeholder="Password" {...register('password', { required: true })} />
           {errors.password && (<p className="text-red-500">Password is required</p>)}
           <Button value="Sign up" />        </form>
-        <p className="flex gap-x-2 justify-between mt-2">
+        <p className="flex gap-x-2 justify-between mt-6">
           Have you already got an account?
-          <Link to="/login" className="text-sky-500">Sign in</Link>
+          <Link to="/login" className="text-indigo-700">Sign in</Link>
         </p>
       </div>
     </div>

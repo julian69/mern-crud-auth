@@ -10,11 +10,25 @@ export default function TasksPage() {
     getTasks()
   }, [])
 
-  return !tasks.length
-    ? <p>No tasks</p>
-    : (
-      <div className="grid grid-cols-3 gap-2">
-        {tasks.map(task => <TaskCard key={task._id} task={task} />)}
+  return (
+    <div className="">
+      <div className="p-4 flex">
+        <h1 className="text-3xl font-bold">Your Tasks</h1>
       </div>
-    )
+      <div className="px-3 py-4 flex justify-center">
+        <table className="w-full text-md bg-white border shadow-md rounded-sm mb-4">
+          <tbody>
+            <tr className="border-b bg-gray-100">
+              <th className="text-left p-3 px-5">Date</th>
+              <th className="text-left p-3 px-5">Title</th>
+              <th className="text-left p-3 px-5">Desctiption</th>
+              <th></th>
+            </tr>
+            {tasks.map(task => <TaskCard key={task._id} task={task} />)}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  )
 }

@@ -20,7 +20,7 @@ function App() {
       <TaskProvider>
         <BrowserRouter>
           <Navbar />
-          <main className="container mx-auto">
+          <main className="container mx-auto h-screen">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
