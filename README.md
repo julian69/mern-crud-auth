@@ -15,22 +15,22 @@ Coming soon...
 - MongoDB
 
 ### Scripts
-Run development server
+Run the server
 
+```bash
+$ cd server
+```
 ```bash
 $ npm run dev
 ```
 
-Build
+Run the client
 
 ```bash
-$ npm run build
+$ cd client
 ```
-
-Test
-
 ```bash
-$ npm run test
+$ npm run dev
 ```
 
 ### Preview
